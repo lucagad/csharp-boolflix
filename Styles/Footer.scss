@@ -1,0 +1,21 @@
+@import '../Styles/general';
+@import '../Styles/vars';
+@import '../Styles/mixins';
+
+.footer_personal{
+    background-color: $secondary-color;
+    color: $title-primary-color;
+    
+    @include flex-sbtw();
+    .logo_footer{
+        img{
+            width: 120px;
+        }
+    }
+
+    a {
+        color: $title-primary-color;
+        text-decoration: none;
+    }
+    
+}
