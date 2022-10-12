@@ -48,12 +48,12 @@ namespace csharp_boolflix.Migrations
                     b.Property<int>("CastId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MediaInfosMediaInfoId")
+                    b.Property<int>("MediaInfosId")
                         .HasColumnType("int");
 
-                    b.HasKey("CastId", "MediaInfosMediaInfoId");
+                    b.HasKey("CastId", "MediaInfosId");
 
-                    b.HasIndex("MediaInfosMediaInfoId");
+                    b.HasIndex("MediaInfosId");
 
                     b.ToTable("ActorMediaInfo");
                 });
@@ -69,6 +69,9 @@ namespace csharp_boolflix.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EpisodeNumber")
+                        .HasColumnType("int");
 
                     b.Property<int>("RunningTime")
                         .HasColumnType("int");
@@ -115,12 +118,12 @@ namespace csharp_boolflix.Migrations
                     b.Property<int>("FeaturesId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MediaInfosMediaInfoId")
+                    b.Property<int>("MediaInfosId")
                         .HasColumnType("int");
 
-                    b.HasKey("FeaturesId", "MediaInfosMediaInfoId");
+                    b.HasKey("FeaturesId", "MediaInfosId");
 
-                    b.HasIndex("MediaInfosMediaInfoId");
+                    b.HasIndex("MediaInfosId");
 
                     b.ToTable("FeatureMediaInfo");
                 });
@@ -174,23 +177,23 @@ namespace csharp_boolflix.Migrations
                     b.Property<int>("GenresId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MediaInfosMediaInfoId")
+                    b.Property<int>("MediaInfosId")
                         .HasColumnType("int");
 
-                    b.HasKey("GenresId", "MediaInfosMediaInfoId");
+                    b.HasKey("GenresId", "MediaInfosId");
 
-                    b.HasIndex("MediaInfosMediaInfoId");
+                    b.HasIndex("MediaInfosId");
 
                     b.ToTable("GenreMediaInfo");
                 });
 
             modelBuilder.Entity("MediaInfo", b =>
                 {
-                    b.Property<int>("MediaInfoId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MediaInfoId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int?>("FilmId")
                         .HasColumnType("int");
@@ -205,7 +208,7 @@ namespace csharp_boolflix.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("MediaInfoId");
+                    b.HasKey("Id");
 
                     b.HasIndex("FilmId")
                         .IsUnique()
@@ -230,10 +233,13 @@ namespace csharp_boolflix.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RunningTime")
+                    b.Property<int>("NumberOfEpisodes")
                         .HasColumnType("int");
 
-                    b.Property<int>("SeasonCount")
+                    b.Property<int>("NumberOfSeasons")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RunningTime")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -258,7 +264,7 @@ namespace csharp_boolflix.Migrations
 
                     b.HasOne("MediaInfo", null)
                         .WithMany()
-                        .HasForeignKey("MediaInfosMediaInfoId")
+                        .HasForeignKey("MediaInfosId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -284,7 +290,7 @@ namespace csharp_boolflix.Migrations
 
                     b.HasOne("MediaInfo", null)
                         .WithMany()
-                        .HasForeignKey("MediaInfosMediaInfoId")
+                        .HasForeignKey("MediaInfosId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -299,7 +305,7 @@ namespace csharp_boolflix.Migrations
 
                     b.HasOne("MediaInfo", null)
                         .WithMany()
-                        .HasForeignKey("MediaInfosMediaInfoId")
+                        .HasForeignKey("MediaInfosId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
