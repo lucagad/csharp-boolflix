@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using csharp_boolflix.DBContext;
 using Microsoft.AspNetCore.Mvc;
 using csharp_boolflix.Models;
 
@@ -15,7 +16,14 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        List<Genre> genres;
+
+        using (BoolflixDbContext db = new BoolflixDbContext())
+        {
+            genres = db.Genres.ToList();
+        }
+
+        return View("Index", genres);
     }
 
     public IActionResult Privacy()
