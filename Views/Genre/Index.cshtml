@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Homepage - ";
+    //Layout = null;
+}
+@model List<Genre>;
+
+<div class="container mt-4">
+
+    <div class="card w-100">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5>Lista dei Generi</h5>
+            <a class="btn btn_custom_secondary" href="@Url.Action("Create", "Genre")">+</a>
+        </div>
+        
+        <div class="card-body mx-1 d-flex flex-column flex-md-row row">
+          @if (Model.Count !=0 )
+          {
+              <table class="table">
+                  <thead class="thead-dark">
+                  <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Miniatura</th>
+                      <th scope="col">Nome</th>
+                      <th scope="col">Azioni</th>
+                  </tr>
+                  </thead>
+
+                  <tbody>
+                  
+                  @foreach (Genre genre in @Model)
+                  {
+                      <tr>
+                          <th scope="row">@genre.Id</th>
+                          <td><img class="table-img-custom" style="height: 125px" src="@genre.ImgUrl" alt="@genre.Name"></td>
+                          <td>@genre.Name</td>
+                          <td>
+                              <div class="d-flex justify-content-start align-items-center">
+                                  
+                                  <a class="btn btn_custom_info" href="@Url.Action("Show", "Genre", new { id = @genre.Id })"><i class="fas fa-info-circle"></i></a>
+                                  <a class="btn btn_custom_edit" href="@Url.Action("", "Genre", new { id = @genre.Id })"><i class="fas fa-edit"></i></a>
+                                  <form asp-controller="Genre" asp-action="Delete" asp-route-id="@genre.Id" method="post">
+                                      @Html.AntiForgeryToken()
+                                      <button type="submit" class="btn btn_custom_delete">
+                                          <i class="fas fa-trash"></i>
+                                      </button>
+                                  </form>
+                                  
+                              </div>
+                              
+                          </td>
+
+                      </tr>
+                  }
+
+                  </tbody>
+              </table>
+          }
+          else
+          {
+              <p>Non è presente nessun elemento.</p>
+          }
+        </div>
+        
+    </div>
+</div>

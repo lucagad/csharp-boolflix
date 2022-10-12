@@ -6,11 +6,13 @@
         </a>
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <font-awesome-icon icon="fa-solid fa-bars" class="hamburger_icon"/>
+            <i class="fa-solid fa-bars"></i>
         </button>
         
         <div class="collapse navbar-collapse navbar_select_container" id="navbarSupportedContent">
-            <span> SEARCH BAR</span>
+            @* <span> SEARCH BAR</span> *@
+            <a asp-area="" asp-controller="Home" asp-action="Index">Attori</a>
+            <a asp-area="" asp-controller="Genre" asp-action="Index">Generi</a>
         </div>
         
     </div>
