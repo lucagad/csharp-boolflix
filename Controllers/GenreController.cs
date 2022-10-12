@@ -42,44 +42,32 @@ public class GenreController : Controller
         return View("Create");
     }
 
-    /*[HttpPost]
+    [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create(PizzasCategories formData)
+    public IActionResult Create(Genre formData)
     {
-        if (!ModelState.IsValid)
+        using (BoolflixDbContext context = new BoolflixDbContext())
         {
-            PizzasCategories pizzasCategories = new PizzasCategories();
-            pizzasCategories.Categories = new PizzaContext().Categories.ToList();
-            pizzasCategories.Ingredients = new PizzaContext().Ingredients.ToList();
-            return View("Create", pizzasCategories);
-        }
-
-        using (PizzaContext context = new PizzaContext())
-        {
-            Pizza pizzaToCreate = new Pizza();
+            Genre newGenre = new Genre();
             
-            pizzaToCreate.Name = formData.Pizza.Name;
-            pizzaToCreate.Description = formData.Pizza.Description;
-            
-            if (formData.Pizza.ImgUrl != null)
+            newGenre.Name = formData.Name;
+           
+            if (formData.ImgUrl != null)
             {
-                pizzaToCreate.ImgUrl = formData.Pizza.ImgUrl;
+                newGenre.ImgUrl = formData.ImgUrl;
             }
             else
             {
-                pizzaToCreate.ImgUrl="/img/placeholder.jpg";
+                newGenre.ImgUrl="/img/placeholder.jpg";
             }
             
-            pizzaToCreate.Price = formData.Pizza.Price;
-            pizzaToCreate.CategoryId = formData.Pizza.CategoryId;
             
-            pizzaToCreate.Ingredients = context.Ingredients.Where(ingredient => formData.SelectedIngredients.Contains(ingredient.Id)).ToList<Ingredient>();
-            context.Pizzas.Add(pizzaToCreate);
+            context.Genres.Add(newGenre);
             context.SaveChanges();
 
             return RedirectToAction("Index");
         }
-    }*/
+    }
  
     /*[HttpGet]
     public IActionResult Update(int id)

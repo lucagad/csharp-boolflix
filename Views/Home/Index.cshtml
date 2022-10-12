@@ -28,17 +28,17 @@
 			<div class="container">
 				<div class="columns is-multiline p-0 pt-6 last">
 					<div class="column is-full">
-						<p class="has-text-white">Generi</p>
+						<h4 class="has-text-white">GENERI</h4>
 					</div>
 					
 					<div class="row">
 						
 					@foreach (Genre genre in @Model)
 					{
-						<div class="col column is-one-quarter d-flex flex-column align-items-center">
+						<div class="col column is-one-quarter d-flex flex-column align-items-center m-2">
 							<img style="width: 350px" src="@genre.ImgUrl">
 							
-							<span>@genre.Name</span>
+							<span class="mt-3">@genre.Name</span>
 						</div>         
 					}
 					</div>

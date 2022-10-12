@@ -32,6 +32,18 @@
                                 <span asp-validation-for="@Model.Name" class="text-danger"></span>
                             </div>
                             
+                            @*{{-- Immagine genere --}}*@
+                            <div class="form-group">
+                                <label class="font-weight-bold" for="image">Copertina</label>
+                                <input type="text"
+                                       value=""
+                                       class="form-control"
+                                       asp-for="@Model.ImgUrl"
+                                       id="image"
+                                       placeholder="Inserisci la copertina">
+                                <span asp-validation-for="@Model.ImgUrl" class="text-danger"></span>
+                            </div>
+                            
                             @*{{-- Submit --}}*@
                             <button type="submit" class="btn btn_custom my-2">Crea</button>
                         </form>
