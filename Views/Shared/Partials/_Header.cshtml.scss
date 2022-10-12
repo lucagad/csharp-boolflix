@@ -1,0 +1,28 @@
+
+.navbar_personal {
+  background-color: lighten(#141414, 15%);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  .logo{
+    img{
+      width: 120px;
+    }
+  }
+
+  .navbar_select_container{
+    flex-grow: 0;
+  }
+
+  .navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: #db1f2c 0 0 0 0.25rem;
+  }
+
+  .hamburger_icon{
+    color: #db1f2c;
+  }
+}
